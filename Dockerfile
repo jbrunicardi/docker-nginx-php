@@ -3,7 +3,8 @@ MAINTAINER jbrunicardi@gmail.com
 
 RUN \
   rpm --rebuilddb && yum update -y && \
-  `# Install sendmail
+  
+  `# Install sendmail` \
   yum install -y sendmail && \
   
   `# Clean YUM caches to minimise Docker image size... #` \
