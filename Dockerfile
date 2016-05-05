@@ -1,4 +1,4 @@
-FROM million12/nginx-php:php56
+FROM million12/nginx-php:latest
 MAINTAINER jbrunicardi@gmail.com
 
 RUN \
