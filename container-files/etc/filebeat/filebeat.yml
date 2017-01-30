@@ -1,0 +1,25 @@
+filebeat:
+  prospectors:
+    -
+      paths:
+        - /data/www/*/log/access.log
+
+      document_type: nginx-access
+
+  registry_file: "/etc/filebeat/registry"
+
+output:
+
+  logstash:
+    # Will be replaced by docker-entrypoint.sh
+    hosts: ["${LOGSTASH_HOST}"]
+
+    # Set TLS=true for docker-entrypoint.sh to enable TLS
+    # https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html#configuration-output-tls
+    # tls:
+    #  insecure: true
+
+
+  ## Console output (can be used for testing configs)
+  # console:
+  #   pretty: true

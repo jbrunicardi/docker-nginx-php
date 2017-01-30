@@ -7,7 +7,18 @@ RUN \
   `# Install sendmail, memcached #` \
   yum install -y sendmail memcached php-memcache && \
   
+  `# Install cron #` \
+  yum install -y libmhash-devel && \
+  yum install -y vixie-cron crontabs && \ 
+  
+  `# Install filebeat #` \
+  curl -LO https://download.elastic.co/beats/filebeat/filebeat-1.2.3-x86_64.rpm && \
+  yum localinstall -y filebeat-1.2.3-x86_64.rpm && \
+  rm -f filebeat-1.2.3-x86_64.rpm && \
+  
   `# Clean YUM caches to minimise Docker image size... #` \
   yum clean all && rm -rf /tmp/yum*
+
+ENV LOGSTASH_HOST   127.0.0.1:5044
 
 ADD container-files /
