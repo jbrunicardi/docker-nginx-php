@@ -11,6 +11,9 @@ RUN \
   yum install -y libmhash-devel && \
   yum install -y vixie-cron crontabs && \ 
   
+  `# Install logrotate #` \
+  yum install -y logrotate && \
+  
   `# Install filebeat #` \
   curl -LO https://download.elastic.co/beats/filebeat/filebeat-1.2.3-x86_64.rpm && \
   yum localinstall -y filebeat-1.2.3-x86_64.rpm && \
