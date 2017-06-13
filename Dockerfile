@@ -1,5 +1,5 @@
-FROM million12/nginx-php:php56
-MAINTAINER jbrunicardi@gmail.com
+FROM jbrunicardi/docker-nginx-php-nochown:php56
+MAINTAINER Jaime Brunicardi <jbrunicardi@gmail.com>
 
 RUN \
   rpm --rebuilddb && yum update -y && \
