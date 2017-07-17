@@ -4,8 +4,6 @@ MAINTAINER Jaime Brunicardi <jbrunicardi@gmail.com>
 RUN \
   rpm --rebuilddb && yum update -y && \
   
-  rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
-  
   yum-config-manager --enable remi-php71 && \
   
   `# Install sendmail, memcached #` \
