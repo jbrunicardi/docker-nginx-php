@@ -4,10 +4,8 @@ MAINTAINER Jaime Brunicardi <jbrunicardi@gmail.com>
 RUN \
   rpm --rebuilddb && yum update -y && \
   
-  yum-config-manager --enable remi-php71 && \
-  
   `# Install sendmail, memcached #` \
-  yum install -y sendmail memcached php-memcache && \
+  yum install -y sendmail memcached && \
   
   `# Install cron #` \
   yum install -y libmhash-devel && \
