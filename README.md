@@ -1,30 +1,60 @@
 # Nginx + PHP-FPM docker container
-[![Circle CI](https://circleci.com/gh/million12/docker-nginx-php/tree/master.svg?style=svg)](https://circleci.com/gh/million12/docker-nginx-php/tree/master)
 
-This is a [million12/nginx-php](https://registry.hub.docker.com/u/million12/nginx-php/) docker container with Nginx + PHP-FPM combo. 
+[![Build Status](https://jenkins.ozgo.info/jenkins/buildStatus/icon?job=ghp-million12-docker-nginx-php)](https://jenkins.ozgo.info/jenkins/view/GitHub%20Public%20Docker%20Images/job/ghp-million12-docker-nginx-php/)  
+[![GitHub Open Issues](https://img.shields.io/github/issues/million12/docker-nginx-php.svg)](https://github.com/million12/docker-nginx-php/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/million12/docker-nginx-php.svg)](https://github.com/million12/docker-nginx-php)
+[![GitHub Forks](https://img.shields.io/github/forks/million12/docker-nginx-php.svg)](https://github.com/million12/docker-nginx-php)  
+[![Stars on Docker Hub](https://img.shields.io/docker/stars/million12/nginx-php.svg)](https://hub.docker.com/r/million12/nginx-php)
+[![Pulls on Docker Hub](https://img.shields.io/docker/pulls/million12/nginx-php.svg)](https://hub.docker.com/r/million12/nginx-php)  
+[![](https://images.microbadger.com/badges/version/million12/nginx-php.svg)](http://microbadger.com/images/million12/nginx-php)
+[![](https://images.microbadger.com/badges/license/million12/nginx-php.svg)](http://microbadger.com/images/million12/nginx-php)  
+[![](https://images.microbadger.com/badges/image/million12/nginx-php.svg)](http://microbadger.com/images/million12/nginx-php)
 
-For different PHP versions, look up different branches of this repository. On Docker Hub you can find them under different tags:    
-* `million12/nginx-php:latest` - PHP 5.6 (master branch)
-* `million12/nginx-php:php-55` - PHP 5.5 ([php-55](https://github.com/million12/docker-nginx-php/tree/php-55) branch)
-* `million12/nginx-php:php-70` - PHP 7.0-dev aka PHPNG ([php-70](https://github.com/million12/docker-nginx-php/tree/php-70) branch)
+[![Docker build](https://dockeri.co/image/million12/nginx-php)](https://hub.docker.com/r/million12/nginx-php/)
+
+Felling like supporting me in my projects use donate button. Thank You!  
+[![](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://www.paypal.me/POzgo)
+
+This is a [million12/nginx-php](https://registry.hub.docker.com/u/million12/nginx-php/)
+docker container with Nginx + PHP-FPM combo.
+
+For different PHP versions, look up different branches of this repository.  
+On Docker Hub you can find them under different tags:
+
+* `million12/nginx-php:php74` - PHP 7.4 # built from `php74` branch
+* `million12/nginx-php:php73` - PHP 7.3 # built from `php73` branch
+* `million12/nginx-php:php70` - PHP 7.0 # built from `php70` branch
+* `million12/nginx-php:php56` - PHP 5.6 # built from `php56` branch
+* `million12/nginx-php:php55` - PHP 5.5 # built from `php55` branch
 
 
-#### Things included:
+# Things included:
 
-#### Nginx
+#### - Nginx with HTTP/2 support
 
-This image is based on [million12/nginx](https://github.com/million12/docker-nginx) - go there for more details.  
-**Default vhost** is configured and served from `/data/www/default`. Add .php file to that location to have it executed with PHP.
+This image is based on [million12/nginx](https://github.com/million12/docker-nginx).  
+**Default vhost** is configured and served from `/data/www/default`. Add .php file 
+to that location to have it executed with PHP.
 
 #### - PHP-FPM
 
-**PHP 5.6** is up & running for default vhost. As soon as .php file is requested, the request will be redirected to PHP upstream. See [/etc/nginx/conf.d/php-location.conf](container-files/etc/nginx/conf.d/php-location.conf).
+**PHP 7.4** is up & running for default vhost. As soon as .php file is requested, the request will be redirected to PHP upstream. See [/etc/nginx/conf.d/php-location.conf](container-files/etc/nginx/conf.d/php-location.conf).
 
 File [/etc/nginx/fastcgi_params](container-files/etc/nginx/fastcgi_params) has improved configuration to avoid repeating same config options for each vhost. This config works well with most PHP applications (e.g. Symfony2, TYPO3, Wordpress, Drupal).
 
+#### - PHP basic tuning
 Custom PHP.ini directives are inside [/etc/php.d](container-files/etc/php.d/).
 
-#### Directory structure
+#### - Common dev tools for web app development
+* git `2.14.1`
+* Ruby `2.3`
+* Bundler
+* NodeJS
+* NPM
+* NPM packages like `gulp`, `grunt`, `bower`, `browser-sync`
+
+
+# Directory structure inside image
 ```
 /data/www # meant to contain web content
 /data/www/default # root directory for the default vhost
