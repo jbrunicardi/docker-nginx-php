@@ -1,4 +1,4 @@
-FROM jbrunicardi/docker-nginx-php-nochown:php73
+FROM jbrunicardi/docker-nginx-php-nochown:php74
 MAINTAINER Jaime Brunicardi <jbrunicardi@gmail.com>
 
 RUN \
