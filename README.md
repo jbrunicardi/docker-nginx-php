@@ -62,9 +62,9 @@ Custom PHP.ini directives are inside [/etc/php.d](container-files/etc/php.d/).
 /data/tmp/php/ # PHP temp directories
 ```
 
-#### Error logging
+# Error logging
 
-PHP errors are forwarded to stderr (by leaving empty value for INI error_log setting) and captured by supervisor. You can see them easily via `docker logs [container]`. In addition, they are captured by parent Nginx worker and logged to `/data/logs/nginx-error.log'. PHP-FPM logs are available in `/data/logs/php-fpm*.log` files. 
+PHP errors are forwarded to stderr (by leaving empty value for INI error_log setting) and captured by supervisor. You can see them easily via `docker logs [container]`. In addition, they are captured by parent Nginx worker and logged to `/data/logs/nginx-error.log'. PHP-FPM logs are available in `/data/logs/php-fpm*.log` files.
 
 ##### - pre-defined FastCGI cache for PHP backend
 
@@ -74,20 +74,15 @@ location ~ \.php$ {
     # Your standard directives...
     include               fastcgi_params;
     fastcgi_pass          php-upstream;
-    
+
     # Use the configured cache (adjust fastcgi_cache_valid to your needs):
     fastcgi_cache         APPCACHE;
     fastcgi_cache_valid   60m;
 }
 ```
 
-#### Common dev tools for web app development
 
-* Ruby 2.0, Bundler
-* NodeJS and NPM
-* NPM packages like gulp, grunt, bower, browser-sync
-
-## Usage
+# Usage
 
 ```
 docker run -d -v /data --name=web-data busybox
@@ -99,7 +94,7 @@ After that you can see the default vhost content (something like: '*default vhos
 You can replace `/data/www/default/index.html` with `index.php` and, for instance, phpinfo() to inspect installed PHP setup. You can do that using separate container which mounts /data volume (`docker run -ti --volumes-from=web-data --rm busybox`) and adding the file to the above location.
 
 
-## Customise
+# Customise
 
 There are several ways to customise this container, both in a runtime or when building new image on top of it:
 
@@ -125,7 +120,3 @@ Configure ip address that would be allowed to see PHP-FPM status page on `/fpm_s
 
 Author: ryzy (<marcin@m12.io>)  
 Author: pozgo (<linux@ozgo.info>)
-
----
-
-**Sponsored by** [Typostrap.io - the new prototyping tool](http://typostrap.io/) for building highly-interactive prototypes of your website or web app. Built on top of TYPO3 Neos CMS and Zurb Foundation framework.
